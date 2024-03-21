@@ -1,4 +1,3 @@
-// ImageRatingComponent.js
 
 import React, { Component } from 'react';
 import './ContentRating.css';
