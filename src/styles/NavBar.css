@@ -6,7 +6,6 @@
   justify-content: center;
   align-items: center;
   color: rgb(221, 221, 221);
-  
 }
 
 .navBar ul {
@@ -17,4 +16,8 @@
 .navBar li {
   display: inline-block;
   cursor: pointer;
+}
+
+.navBar li:hover {
+  color: aliceblue;
 }
