@@ -1,0 +1,113 @@
+/* ImageRatingComponent.css */
+.body {
+  background-color: rgb(31, 31, 31);
+  height: 91.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.body .content-rating {
+    color: rgb(213, 213, 213);
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 40px;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+  }
+
+.content-rating .card{
+  background: linear-gradient(180deg, rgb(59, 59, 59), rgb(37, 37, 37));
+  width: 350px;
+  height: 250px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.2); 
+  /* 2 shadow effect, the 1st darker and 2nd is lighter but bigger. Realistic Shadow effect */
+  transition: box-shadow 0.3s ease-in-out; /* Smooth transition for shadow effect */
+}
+
+.content-rating .card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.card .image img {
+  width: 100%;
+  height: 100%;
+}
+
+.card .image {
+
+  width: 100%;
+  height: 60%;
+  border-radius: 20px;
+}
+
+.card .desc{
+  margin: 6px 0;
+  width: 280px;
+  margin-left: 15px;
+}
+
+.card .desc .title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card .desc .sub {
+  margin-top: 4px;
+  color: rgb(174, 174, 174);
+  font-size: 10px;
+}
+
+.content-rating .total-rating {
+  /* color: rgb(215, 215, 215); */
+  color: rgb(209, 209, 209);
+  font-size: 14px;
+  margin-top: 6px;
+  margin-right: 35px;
+  width: 90px;
+}
+
+.card .options {
+  margin-left: 0px;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.card .button {
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #404040, #353535);
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+.card .rating-buttons .like-button {
+  margin-left: 6px;
+  width: 90px;
+}
+
+.card .rating-buttons .dislike-button {
+  margin-left: 8px;
+  width: 90px;
+}
+
+.card .rating-buttons .like-button:hover {
+  background-color: #848484;
+}
+
+.card .rating-buttons .dislike-button:hover {
+  background-color: #848484;
+}
+.card .rating-buttons {
+  width: 60%;
+
+}
+

@@ -1,11 +1,13 @@
+import NavBar from "./Components/NavBar"
 import ContentRating from "./Components/ContentRating"
 
 function App() {
   return (
    <>
-  <ContentRating/>
+  <NavBar />
+  <ContentRating />
    </>
   )
 }
 
-export default App
+export default App;

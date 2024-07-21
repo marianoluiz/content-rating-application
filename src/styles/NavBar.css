@@ -1,0 +1,20 @@
+.navBar {
+  background-color: rgb(73, 73, 255);
+  height: 8.5vh;
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+  color: rgb(221, 221, 221);
+  
+}
+
+.navBar ul {
+  display: flex;
+  gap: 50px;
+}
+
+.navBar li {
+  display: inline-block;
+  cursor: pointer;
+}

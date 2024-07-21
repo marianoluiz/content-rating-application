@@ -1,63 +1,96 @@
-
 import React, { Component } from 'react';
-import './ContentRating.css';
+import '../styles/index.css';
+import '../styles/ContentRating.css';
 
-/* Step 1: Setting the initial state */
 class ContentRating extends Component {
-    constructor() {
-        super();
-        this.state = {
-            likes: 0,
-            dislikes: 0,
-            contentRatings: 0,
+  constructor(props) {
+    super(props);
+    // Initialize state with an array of card states
+    this.state = {
+      cards: [
+        { likes: 0, dislikes: 0, contentRatings: 0, name: 'John Strong' },
+        { likes: 0, dislikes: 0, contentRatings: 0, name: 'Big Chungus' },
+        { likes: 0, dislikes: 0, contentRatings: 0, name: "Shaquille o'Meal" },
+        { likes: 0, dislikes: 0, contentRatings: 0, name: 'Vim Otawa' },
+        { likes: 0, dislikes: 0, contentRatings: 0, name: 'Little Timmy' },
+        { likes: 0, dislikes: 0, contentRatings: 0, name: 'David Goggins' }
+      ]
+    };
+  }
 
-            /* Step 2: Event h
-            Handling */
+  // Update the like count for a specific card
+  handleLike = (index) => {
+    console.log(`Like button clicked for index: ${index}`);
+    this.setState( (prevState) => { //prevState as parameter of the callback
+      const newCards = [...prevState.cards];
+      newCards[index].likes += 1;
 
-            handleLike: () => {
-                
-                this.setState((prevState) => ({
-                    //i was confused here, so this arrow function has enclosed ( ) because it is returning object literal. 
+      const totalInteractions = (newCards[index].likes + newCards[index].dislikes);
+        /* converts to float using parseFloat then string using toFixed() */
+      newCards[index].contentRatings = parseFloat(
+        (newCards[index].likes / totalInteractions) * 5).toFixed(2);
 
-                    //so declaring object literal seperate then returning just the object name is an option as well.
+      return { cards: newCards };
+    });
+  };
 
-                    likes: prevState.likes + 1,
-                    contentRatings: prevState.contentRatings + 1
-                }));
-                
-            },
+  // Update the dislike count for a specific card
+  handleDislike = (index) => {
+    this.setState( (prevState) => { //prevState as parameter of the callback
+      const newCards = [...prevState.cards];
+      newCards[index].dislikes += 1;
 
-            handleDislike: () => {
-                this.setState((prevState) => ({
-                    dislikes: prevState.dislikes + 1,
-                    contentRatings: prevState.contentRatings + 1
-                }));
-            },
-        };
-    }
-    /* Step 4: Call the event handlers */
-    render() {
-        return(
-            <>
-            <div className='content-rating'>
-                <p>
-                    React Content Rating Application
-                </p>
-                
-                <div className='rating-buttons'>
-                    <button className='like-button' onClick={this.state.handleLike}>
-                        Like: ({this.state.likes})
-                    </button>
-                    <button className='dislike-button' onClick = {this.state.handleDislike}>
-                        Dislike: ({this.state.dislikes})
-                    </button>
+        /* converts to float using parseFloat then string using toFixed() */
 
-                    <p>Total Ratings: ({this.state.contentRatings})</p>
+      const totalInteractions = (newCards[index].likes + newCards[index].dislikes);
+
+      newCards[index].contentRatings = parseFloat(
+        (newCards[index].likes / totalInteractions) * 5).toFixed(2);
+        
+      return { cards: newCards };
+    });
+  };
+
+  render() {
+    return (
+      <>
+        <div className="body">
+          <div className='content-rating'>
+
+            {/* map function is called corresponds to the number of objects (or elements) in the array. */} 
+            {/* it applies the callback function to each element in the array (which is in the state) */}
+            {/* so there would be 6 copies of this div */}
+
+            {/* array.map(function(currentValue, index, arr), thisValue) */}
+            
+            {this.state.cards.map((card, index) => ( /* it can also be return { ... } not () */
+              <div key={index} className={`card card-${index + 1}`}>
+                <div className='image'>
+                  <img src={`https://picsum.photos/300/200?random=${index + 1}`} alt="Image Placeholder" />
                 </div>
-            </div>
-            </>
-        )
-    }
+                <div className='desc'>
+                  <p className='title'>Image Description</p>
+                  <p className='sub'>Posted by {card.name}</p>
+                </div>
+                <div className='options'>
+                  <div className='rating-buttons'>
+                    <button className='like-button button' onClick={() => this.handleLike(index)}>
+                      Like: ({card.likes})
+                    </button>
+                    <button className='dislike-button button' onClick={() => this.handleDislike(index)}>
+                      Dislike: ({card.dislikes})
+                    </button>
+                  </div>
+                  <div className='total-rating'>Ratings: ({card.contentRatings})</div>
+                </div>
+              </div>
+            ))}
+            
+          </div>
+        </div>
+      </>
+    );
+  }
 }
 
 export default ContentRating;
